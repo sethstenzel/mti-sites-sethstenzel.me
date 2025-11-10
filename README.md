@@ -37,11 +37,13 @@ uv pip install -e .
 
 ### Running Locally
 
-```bash
+```
 # Development mode (auto-reload, opens browser)
+cd ./src/mti_sites_sethstenzel.me
 python -m mti_sites_sethstenzel_me.site --dev
 
 # Production mode (runs on localhost:18001)
+cd ./src/mti_sites_sethstenzel.me
 python -m mti_sites_sethstenzel_me.site
 ```
 
