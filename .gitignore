@@ -4,7 +4,6 @@ DEPLOYMENT.MD
 nginx-site.conf
 sethstenzel-site.service
 
-
 # Python
 __pycache__/
 *.py[cod]

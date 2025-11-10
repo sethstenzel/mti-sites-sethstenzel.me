@@ -40,11 +40,11 @@ uv pip install -e .
 ```
 # Development mode (auto-reload, opens browser)
 cd ./src/mti_sites_sethstenzel.me
-python -m mti_sites_sethstenzel_me.site --dev
+python -m mti_sites_sethstenzel_me.site --dev (or without argument)
 
 # Production mode (runs on localhost:18001)
 cd ./src/mti_sites_sethstenzel.me
-python -m mti_sites_sethstenzel_me.site
+python -m mti_sites_sethstenzel_me.site --prod
 ```
 
 ## Project Structure

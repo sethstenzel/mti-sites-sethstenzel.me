@@ -10,19 +10,13 @@ build_routes()
 if __name__ in {"__main__", "__mp_main__"}:
     parser = argparse.ArgumentParser(description='Run the sethstenzel.me site')
     parser.add_argument('--dev', action='store_true', help='Run in development mode')
+    parser.add_argument('--prod', action='store_true', help='Run in production mode')
     args = parser.parse_args()
 
     app.add_static_files('/static', 'static')
     app.add_static_files('/content', 'content') 
 
-    if args.dev:
-        # Development mode: auto-reload, open browser, default settings
-        ui.run(port=18001,
-        title='sethstenzel.me',
-        favicon='r ',  # Optional: customize
-        uvicorn_reload_includes = "*.py, *.css, *.js, *.ts, *.json"
-        )
-    else:
+    if args.prod:
         # Production configuration
         ui.run(
             host='127.0.0.1',  # Only listen locally, nginx will proxy
@@ -32,5 +26,13 @@ if __name__ in {"__main__", "__mp_main__"}:
             title='sethstenzel.me',
             favicon='🌐'  # Optional: customize
         )
+    else:
+        # Development mode: auto-reload, open browser, default settings
+        ui.run(port=18001,
+        title='sethstenzel.me',
+        favicon='r ',  # Optional: customize
+        uvicorn_reload_includes = "*.py, *.css, *.js, *.ts, *.json"
+        )
+
                 
     ui.column.default_style('padding: unset; margin: unset; gap: unset;')
