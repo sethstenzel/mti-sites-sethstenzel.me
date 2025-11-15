@@ -162,10 +162,10 @@ def send_email_via_gmail(
 
     except HttpError as error:
         logger.error(f"Gmail API error: {error}")
-        return False, f"Gmail API error: {error}"
+        return False, f"Gmail API error"
     except Exception as e:
         logger.error(f"Error sending email: {e}")
-        return False, f"Error sending email: {e}"
+        return False, f"Error sending email..."
 
 
 def send_contact_form_email(

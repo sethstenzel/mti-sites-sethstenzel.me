@@ -14,7 +14,7 @@ from mti_sites_sethstenzel_me.pages.templates.center_card import generate_center
 page_url = '/contact'
 
 # Get recipient email from environment variable or use default
-CONTACT_RECIPIENT_EMAIL = os.getenv('CONTACT_RECIPIENT_EMAIL', 'your-email@example.com')
+CONTACT_RECIPIENT_EMAIL = os.getenv('CONTACT_RECIPIENT_EMAIL', 'seth.c.stenzel@gmail.com')
 
 @ui.page(page_url)
 def build_contact_page():
