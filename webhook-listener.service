@@ -1,0 +1,29 @@
+[Unit]
+Description=GitHub Webhook Listener for Auto-Deployment
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/sethstenzel.me
+Environment="PATH=/var/www/sethstenzel.me/.venv/bin"
+Environment="WEBHOOK_PORT=18100"
+Environment="WEBHOOK_SECRET=YOUR_SECRET_HERE_CHANGE_THIS"
+Environment="SERVICE_NAME=sethstenzel-site"
+Environment="DEPLOY_SCRIPT=/var/www/sethstenzel.me/deploy.sh"
+Environment="ALLOWED_BRANCHES=release"
+ExecStart=/var/www/sethstenzel.me/.venv/bin/uvicorn webhook_listener:app --host 127.0.0.1 --port 18100 --log-level info
+Restart=always
+RestartSec=10
+
+# Logging
+StandardOutput=append:/var/www/sethstenzel.me/logs/webhook-stdout.log
+StandardError=append:/var/www/sethstenzel.me/logs/webhook-stderr.log
+
+# Security
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

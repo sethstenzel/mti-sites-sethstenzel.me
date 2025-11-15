@@ -3,7 +3,10 @@ deploy.sh
 DEPLOYMENT.MD
 nginx-site.conf
 sethstenzel-site.service
+
+# Gmail API credentials (NEVER commit these!)
 credentials.json
+token.json
 
 # Python
 __pycache__/

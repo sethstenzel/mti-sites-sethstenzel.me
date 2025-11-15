@@ -90,6 +90,45 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed instructions on deploying to an 
 ./deploy.sh status     # Check status
 ```
 
+### Auto-Deployment with GitHub Webhooks
+
+Set up automatic deployments triggered by GitHub push events. This setup uses a **release branch strategy** for production safety:
+
+- **`main` branch** - Active development (does NOT auto-deploy)
+- **`release` branch** - Production deployment (auto-deploys on push)
+
+When you merge `main` to `release` and push, your server automatically pulls changes and restarts the service.
+
+See [WEBHOOK_SETUP.md](WEBHOOK_SETUP.md) for complete setup instructions and release branch workflow.
+
+**Quick Setup:**
+1. Install FastAPI & uvicorn: `uv pip install -e .`
+2. Generate webhook secret: `python3 -c "import secrets; print(secrets.token_hex(32))"`
+3. Configure and start webhook listener service
+4. Update nginx configuration with webhook endpoint
+5. Add webhook in GitHub repository settings
+6. Create `release` branch: `git checkout -b release && git push origin release`
+
+**Deployment Workflow:**
+```bash
+# Develop on main (does NOT deploy)
+git checkout main
+git add .
+git commit -m "Add feature"
+git push origin main
+
+# Deploy to production (merge to release)
+git checkout release
+git merge main
+git push origin release  # Auto-deploys!
+```
+
+**Files:**
+- `webhook_listener.py` - FastAPI webhook listener (with auto-generated API docs)
+- `webhook-listener.service` - systemd service file (runs with uvicorn)
+- `webhook-nginx.conf` - nginx configuration snippet
+- `WEBHOOK_SETUP.md` - Complete setup guide with workflow details
+
 ## Configuration
 
 The application reads the `SETHSTENZEL_ME_PORT` environment variable for production deployment:
