@@ -3,6 +3,7 @@ deploy.sh
 DEPLOYMENT.MD
 nginx-site.conf
 sethstenzel-site.service
+credentials.json
 
 # Python
 __pycache__/
