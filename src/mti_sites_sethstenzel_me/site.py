@@ -23,7 +23,7 @@ logger.add(
 
 SITE_URL = 'sethstenzel.me'
 
-logger.info(f"Starting {SITE_URL} application")
+logger.info(f"Starting {SITE_URL} hosting application")
 build_routes()
 logger.debug("Routes built successfully")
 

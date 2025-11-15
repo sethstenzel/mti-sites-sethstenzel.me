@@ -33,7 +33,7 @@ The contact form uses the Gmail API to send emails. This requires:
 
 Before creating credentials, you need to configure the OAuth consent screen:
 
-1. Go to **"APIs & Services"** → **"OAuth consent screen"**
+1. Go to **"APIs & Services"** → **"OAuth consent screen"** → **Clients**
 
 2. Select **"External"** (unless you have a Google Workspace account)
    - Click **"Create"**
@@ -98,10 +98,10 @@ cp ~/Downloads/credentials.json /path/to/mti-sites-sethstenzel.me/credentials.js
 
 ```bash
 # Upload to your VPS
-scp ~/Downloads/credentials.json user@your-vps:/var/www/sethstenzel.me/credentials.json
+scp ~/Downloads/credentials.json appuser@172.232.21.70:/var/www/sethstenzel.me/credentials.json
 
 # Set proper permissions
-sudo chown www-data:www-data /var/www/sethstenzel.me/credentials.json
+sudo chown appsuser:appsuser /var/www/sethstenzel.me/credentials.json
 sudo chmod 600 /var/www/sethstenzel.me/credentials.json
 ```
 
@@ -111,7 +111,7 @@ sudo chmod 600 /var/www/sethstenzel.me/credentials.json
 
 ```bash
 # Set recipient email (where contact form submissions go)
-export CONTACT_RECIPIENT_EMAIL="your-email@gmail.com"
+export CONTACT_RECIPIENT_EMAIL="seth.c.stenzel@gmail.com"
 
 # Optional: specify custom paths
 export GMAIL_CREDENTIALS_FILE="credentials.json"
@@ -131,7 +131,7 @@ Add environment variables:
 ```ini
 [Service]
 # ... existing configuration ...
-Environment="CONTACT_RECIPIENT_EMAIL=your-email@gmail.com"
+Environment="CONTACT_RECIPIENT_EMAIL=seth.c.stenzel@gmail.com"
 Environment="GMAIL_CREDENTIALS_FILE=/var/www/sethstenzel.me/credentials.json"
 Environment="GMAIL_TOKEN_FILE=/var/www/sethstenzel.me/token.json"
 ```
@@ -167,36 +167,20 @@ The first time the contact form is used, you'll need to authenticate:
 
 #### Production (VPS) - First Time Setup:
 
-For production, you need to authenticate once. There are two approaches:
+For production, you need to authenticate once.
 
-**Option A: Authenticate Locally First (Recommended)**
+**Authenticate Locally First**
 
 1. Authenticate on your local machine (steps above)
 2. This creates `token.json`
 3. Upload `token.json` to your VPS:
    ```bash
-   scp token.json user@your-vps:/var/www/sethstenzel.me/
-   sudo chown www-data:www-data /var/www/sethstenzel.me/token.json
+   scp token.json appuser@y172.232.21.70:/var/www/sethstenzel.me/
+   sudo chown appsuser:appsuser /var/www/sethstenzel.me/token.json
    sudo chmod 600 /var/www/sethstenzel.me/token.json
    ```
 
-**Option B: Authenticate on VPS via SSH Tunnel**
 
-1. SSH to your VPS with port forwarding:
-   ```bash
-   ssh -L 8080:localhost:8080 user@your-vps
-   ```
-
-2. Temporarily run the app in a way that triggers authentication:
-   ```bash
-   cd /var/www/sethstenzel.me
-   source .venv/bin/activate
-   python -c "from mti_sites_sethstenzel_me.utils import get_gmail_service; get_gmail_service()"
-   ```
-
-3. The OAuth flow will start and you can authenticate via the tunnel
-
-4. Token file will be created on the VPS
 
 ### 8. Verify Setup
 
@@ -215,7 +199,7 @@ success, message = send_contact_form_email(
     name="Test User",
     email="test@example.com",
     message="This is a test message",
-    recipient_email="your-email@gmail.com"
+    recipient_email="seth.c.stenzel@gmail.comyour-email@gmail.com"
 )
 
 print(f"Success: {success}")
@@ -250,8 +234,8 @@ echo "token.json" >> .gitignore
 # Set strict permissions
 chmod 600 credentials.json token.json
 
-# Only www-data (web server) should access them
-sudo chown www-data:www-data credentials.json token.json
+# Only appsuser (web server) should access them
+sudo chown appsuser:appsuser credentials.json token.json
 ```
 
 ### 2. Never Commit Credentials
@@ -346,44 +330,6 @@ rm token.json
 
 For a contact form, these limits are more than sufficient.
 
-## Alternative: Using App Passwords (Simpler but Less Secure)
-
-If you find OAuth too complex, you can use Gmail App Passwords instead:
-
-### Enable App Passwords:
-
-1. Go to your Google Account settings
-2. Security → 2-Step Verification (enable if not already)
-3. Security → App passwords
-4. Generate an app password
-5. Use SMTP instead of Gmail API
-
-### SMTP Example:
-
-```python
-import smtplib
-from email.mime.text import MIMEText
-
-def send_via_smtp(to_email, subject, body):
-    gmail_user = 'your-email@gmail.com'
-    gmail_app_password = 'your-app-password'  # 16-character password
-
-    msg = MIMEText(body)
-    msg['Subject'] = subject
-    msg['From'] = gmail_user
-    msg['To'] = to_email
-
-    with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
-        smtp.login(gmail_user, gmail_app_password)
-        smtp.send_message(msg)
-```
-
-**Note**: Gmail API is preferred because:
-- More secure (OAuth vs password)
-- Better for automation
-- More reliable for server environments
-- Official Google recommendation
-
 ## Support
 
 For issues:
@@ -393,9 +339,9 @@ For issues:
 
 ## Summary Checklist
 
-- [ ] Google Cloud Project created
-- [ ] Gmail API enabled
-- [ ] OAuth consent screen configured
+- [x] Google Cloud Project created
+- [x] Gmail API enabled
+- [x] OAuth consent screen configured
 - [ ] Test user added (your Gmail address)
 - [ ] OAuth credentials created and downloaded
 - [ ] `credentials.json` uploaded to server
@@ -403,7 +349,7 @@ For issues:
 - [ ] First-time authentication completed
 - [ ] `token.json` created
 - [ ] Files added to `.gitignore`
-- [ ] Permissions set correctly (600, owned by www-data)
+- [ ] Permissions set correctly (600, owned by appsuser)
 - [ ] Test email sent successfully
 
 Once complete, your contact form will be fully functional!
