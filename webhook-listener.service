@@ -4,8 +4,8 @@ After=network.target
 
 [Service]
 Type=simple
-User=www-data
-Group=www-data
+User=appsuser
+Group=appsuser
 WorkingDirectory=/var/www/sethstenzel.me
 Environment="PATH=/var/www/sethstenzel.me/.venv/bin"
 Environment="WEBHOOK_PORT=18100"

@@ -257,7 +257,7 @@ sudo cp webhook-listener.service /etc/systemd/system/
 mkdir -p logs
 
 # Set proper permissions
-sudo chown -R www-data:www-data /var/www/sethstenzel.me
+sudo chown -R appsuser:appsuser /var/www/sethstenzel.me
 
 # Reload systemd, enable and start the service
 sudo systemctl daemon-reload
@@ -547,7 +547,7 @@ sudo ufw status
 **Solutions**:
 1. Check webhook listener logs: `tail -50 /var/www/sethstenzel.me/logs/webhook-stderr.log`
 2. Try running deployment manually: `cd /var/www/sethstenzel.me && ./deploy.sh update`
-3. Check git permissions: `sudo chown -R www-data:www-data /var/www/sethstenzel.me`
+3. Check git permissions: `sudo chown -R appsuser:appsuser /var/www/sethstenzel.me`
 
 ### Webhook Not Triggering
 
@@ -579,14 +579,14 @@ sudo ufw status
 
 ```bash
 # Ensure proper ownership
-sudo chown -R www-data:www-data /var/www/sethstenzel.me
+sudo chown -R appsuser:appsuser /var/www/sethstenzel.me
 
 # Ensure deploy.sh is executable
 chmod +x /var/www/sethstenzel.me/deploy.sh
 
 # Check git config
 cd /var/www/sethstenzel.me
-sudo -u www-data git pull
+sudo -u appsuser git pull
 ```
 
 ### Port 18100 Already in Use
