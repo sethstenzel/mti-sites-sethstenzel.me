@@ -15,6 +15,12 @@ def build_portfolio_page():
     def main_conent():
         with ui.row().classes("card-inner-row card-inner-row-content"):
             ui.label('UPPER CONTENT')
+            with ui.column().classes("portfolio-content-col"):
+                pass
+            with ui.column().classes("portfolio-content-col"):
+                pass
+            with ui.column().classes("portfolio-content-col"):
+                pass
         with ui.row().classes("card-inner-row-footer"):
             ui.label('In search of the fantastic, hidden in the everyday.')
 

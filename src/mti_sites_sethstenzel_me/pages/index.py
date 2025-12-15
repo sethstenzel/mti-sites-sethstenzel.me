@@ -1,3 +1,4 @@
+from loguru import logger
 from nicegui import ui
 from mti_sites_sethstenzel_me.utils import load_css, import_web_fonts
 from mti_sites_sethstenzel_me.pages.templates.constants import *
@@ -13,7 +14,7 @@ try:
     with open('./content/pages/index.json', 'r') as json_file:
             page_content = json.load(json_file)
 except FileNotFoundError:
-    pass
+    logger.error("Index page content file not found: ./content/pages/index.json")
 
 @ui.page(page_url)
 def build_index_page():

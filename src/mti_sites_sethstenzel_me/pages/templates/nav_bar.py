@@ -39,4 +39,4 @@ def nav_bar(active_page='') -> None:
         link('Articles', '/articles')
         link('Contact', '/contact')
         link('GitHub', 'https://github.com/sethstenzel', icon_path='/static/imgs/gh.png', new_tab=True)
-        link('YouTube', 'https://www.youtube.com/@sethstenzel', icon_path='/static/imgs/yt.svg', new_tab=True, encode_icon=True)
+        link('YouTube', 'https://www.youtube.com/@sethstenzel', icon_path='/static/imgs/yt.svg', new_tab=True, encode_icon=False)

@@ -3,6 +3,7 @@ import sys
 import argparse
 from nicegui import ui, app
 from loguru import logger
+from pathlib import Path
 from mti_sites_sethstenzel_me.routes import build_routes
 
 # Configure loguru for the application
@@ -34,8 +35,16 @@ if __name__ in {"__main__", "__mp_main__"}:
     args = parser.parse_args()
 
     logger.info("Adding static file routes")
-    app.add_static_files('/static', 'static')
-    app.add_static_files('/content', 'content')
+    app_root = Path(__file__).resolve().parent
+    os.chdir(app_root)
+    logger.info(f"App root directory: {app_root}")
+    static_dir = str(app_root/ "static")
+    content_dir = str(app_root / "content")
+    logger.info("Adding static file routes")
+    logger.info(f"Static directory: {static_dir}")
+    logger.info(f"Content directory: {content_dir}")
+    app.add_static_files('/static', static_dir)
+    app.add_static_files('/content', content_dir)
     logger.debug("Static file routes added: /static, /content")
 
     # Set default column styles
@@ -69,6 +78,6 @@ if __name__ in {"__main__", "__mp_main__"}:
         ui.run(
             port=18001,
             title='sethstenzel.me',
-            favicon='r ',
+            favicon='🌐',
             uvicorn_reload_includes="*.py, *.css, *.js, *.ts, *.json"
         )

@@ -17,6 +17,7 @@ except ImportError:
     GMAIL_API_AVAILABLE = False
     logger.warning("Gmail API libraries not available - contact form will not work")
 
+
 def load_css(file_path: str) -> str:
     """Load CSS file and return as HTML style tag string."""
     css_path = Path(__file__).parent / file_path
@@ -44,7 +45,6 @@ def import_web_fonts() -> str:
 GMAIL_SCOPES = ['https://www.googleapis.com/auth/gmail.send']
 GMAIL_CREDENTIALS_FILE = os.getenv('GMAIL_CREDENTIALS_FILE', 'credentials.json')
 GMAIL_TOKEN_FILE = os.getenv('GMAIL_TOKEN_FILE', 'token.json')
-
 
 def get_gmail_service():
     """
