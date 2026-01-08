@@ -1,10 +1,10 @@
 [
     {
     "project_name":"SethStenzel.me",
-    "project_image_main":"/content/images/portfolio/sparklets.im.png",
+    "project_image_main":"/content/images/portfolio/sethstenzelme-portfolio.png",
     "project_text":"My personal website which serves as both a portfolio project, and a way to share my portfolio.<br><br>Written in Python using NiceGUI and deployed on a shared VPS.<br><br>Configured with Github actions for updates behind Nginx.",
     "project_github_link":"https://github.com/sethstenzel/mti-sites-sethstenzel.me",
-    "project_youtube_link":"www.youtube.com",
+    "project_youtube_link":"",
     "project_download_link":""
     },
     {
