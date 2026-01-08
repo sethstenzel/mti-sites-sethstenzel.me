@@ -102,25 +102,63 @@ function update_application() {
 
     # Pull latest changes
     print_yellow "Pulling from git..."
-    git pull
+
+    # Fetch latest changes
+    git fetch origin
+
+    # Get current branch
+    CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+    # Discard all local changes and reset to remote branch
+    print_yellow "Discarding local changes and resetting to origin/$CURRENT_BRANCH..."
+    git reset --hard "origin/$CURRENT_BRANCH"
+
+    # Remove all untracked files and directories
+    git clean -fd
 
     # Update dependencies
     print_yellow "Updating dependencies..."
     source "$VENV_PATH/bin/activate"
-    uv pip install -e .
+
+    # Use uv if available, otherwise fall back to pip
+    if command -v uv &> /dev/null; then
+        print_yellow "Using uv from PATH..."
+        uv pip install -e .
+    elif [ -x "$HOME/.local/bin/uv" ]; then
+        print_yellow "Using uv from ~/.local/bin..."
+        "$HOME/.local/bin/uv" pip install -e .
+    elif [ -x "$HOME/.cargo/bin/uv" ]; then
+        print_yellow "Using uv from ~/.cargo/bin..."
+        "$HOME/.cargo/bin/uv" pip install -e .
+    elif [ -x "/usr/local/bin/uv" ]; then
+        print_yellow "Using uv from /usr/local/bin..."
+        /usr/local/bin/uv pip install -e .
+    else
+        print_yellow "uv not found, using pip instead..."
+        pip install -e .
+    fi
 
     print_green "Update complete!"
 }
 
 function restart_service() {
     print_cyan "Restarting service '$APP_NAME'..."
-    sudo systemctl restart "$APP_NAME"
+
+    # Try to restart the service
+    if sudo systemctl restart "$APP_NAME" 2>/dev/null; then
+        print_green "Service restarted successfully!"
+    else
+        print_yellow "Unable to restart service via sudo (this is expected in webhook context)"
+        print_yellow "The service will need to be restarted manually or via a separate mechanism"
+        print_yellow "Run: sudo systemctl restart $APP_NAME"
+        return 0  # Don't fail the deployment
+    fi
 
     # Wait a moment
     sleep 2
 
     print_cyan "\nService Status:"
-    sudo systemctl status "$APP_NAME" --no-pager || true
+    sudo systemctl status "$APP_NAME" --no-pager 2>/dev/null || echo "Cannot check status (permission denied)"
 
     print_cyan "\nRecent logs:"
     if [ -f "$APP_DIR/logs/stdout.log" ]; then
