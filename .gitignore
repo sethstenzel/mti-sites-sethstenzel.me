@@ -1,8 +1,11 @@
 # Custom
 deploy.sh
 DEPLOYMENT.MD
+WEBHOOK_SETUP.md
 nginx-site.conf
 sethstenzel-site.service
+webhook-listener.service
+webhook-nginx.conf
 
 # Gmail API credentials (NEVER commit these!)
 credentials.json
