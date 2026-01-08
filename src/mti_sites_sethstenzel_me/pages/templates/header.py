@@ -6,6 +6,6 @@ def generate_header(page_url=''):
         with ui.grid(columns=2):
             with ui.column():
                 ui.label('Seth Stenzel').classes('site-title')
-                ui.label('A little software, a little hardware, and a LOT of me :)')
+                ui.label('A little software, a little hardware, and a good bit of me :)')
             with ui.column().classes('nav-bar-col'):
                 nav_bar(page_url)
