@@ -6,18 +6,18 @@
     "project_github_link":"https://github.com/sethstenzel/mti-sites-sethstenzel.me",
     "project_youtube_link":"",
     "project_download_link":"",
-    "project_website_link":"",
-    "project_clicked_link":""
+    "project_website_link":"https://www.sethstenzel.me/",
+    "project_clicked_link":"https://www.sethstenzel.me/"
     },
     {
     "project_name":"Sparklets.im",
     "project_image_main":"/content/images/portfolio/sparkletsim-portfolio.png",
-    "project_text":"A social media site concept idea allowing friends to share telegram like notes to eachother.<br><br>Vue / FastAPI application on a shared VPS. Connects to a MongoDB via a private Tailscale connection.",
-    "project_github_link":"https://github.com/sethstenzel/mti-sites-sethstenzel.me",
-    "project_youtube_link":"www.youtube.com",
+    "project_text":"Send Joy with Sparklets, A social media concept idea allowing friends to share Sparklet to eachother.<br><br>Vue & FastAPI application on a shared VPS. Connects to a MongoDB via a private Tailscale connection.",
+    "project_github_link":"https://github.com/sethstenzel/mti-sites-sparklets.im",
+    "project_youtube_link":"",
     "project_download_link":"",
-    "project_website_link":"",
-    "project_clicked_link":""
+    "project_website_link":"https://www.sparklets.im",
+    "project_clicked_link":"https://www.sparklets.im"
     },
     {
     "project_name":"KitBash KVM Controller",
@@ -27,27 +27,37 @@
     "project_youtube_link":"",
     "project_download_link":"",
     "project_website_link":"https://kitbashkvm.com/controller/",
-    "project_clicked_link":""
+    "project_clicked_link":"https://kitbashkvm.com/controller/"
     },
     {
     "project_name":"Ghost Coder",
-    "project_image_main":"/content/images/portfolio/sparklets.im.png",
+    "project_image_main":"/content/images/portfolio/ghostcoder-portfolio.png",
     "project_text":"A utility for assisting those writing coding tutorials by automating coding tasks. Python Multiprocess application using a MQTT backend for inter-process communication.",
     "project_github_link":"https://github.com/sethstenzel/ghost-coder",
-    "project_youtube_link":"https://github.com/sethstenzel/ghost-coder",
-    "project_download_link":"https://github.com/sethstenzel/ghost-coder",
-    "project_website_link":"https://github.com/sethstenzel/ghost-coder",
+    "project_youtube_link":"",
+    "project_download_link":"",
+    "project_website_link":"",
     "project_clicked_link":"https://github.com/sethstenzel/ghost-coder"
     },
 
     {
     "project_name":"TinyRedirect",
-    "project_image_main":"/content/images/portfolio/sparklets.im.png",
+    "project_image_main":"/content/images/portfolio/tinyredirect-portfolio.png",
     "project_text":"A local web redirect allowing local aliasing of common IP or web URLS to short aliases.",
-    "project_github_link":"https://github.com/sethstenzel/mti-sites-sethstenzel.me",
-    "project_youtube_link":"www.youtube.com",
+    "project_github_link":"https://github.com/sethstenzel/tiny-redirect",
+    "project_youtube_link":"https://youtu.be/aozdcDPskHs",
     "project_download_link":"",
     "project_website_link":"",
-    "project_clicked_link":""
+    "project_clicked_link":"https://github.com/sethstenzel/tiny-redirect"
+    },
+    {
+    "project_name":"SpecialChars",
+    "project_image_main":"/content/images/portfolio/specialchars-portfolio.png",
+    "project_text":"An application to make selecting special characters on a US keyboard easier. When the application is running, pressing a hotkey combination will trigger its display. Then using intuitive selection, one can select the special character they need and it will be inserted into their application and copy the character to the clip board.",
+    "project_github_link":"https://github.com/sethstenzel/special-chars",
+    "project_youtube_link":"https://youtu.be/aa8u8R8715s",
+    "project_download_link":"",
+    "project_website_link":"",
+    "project_clicked_link":"https://github.com/sethstenzel/special-chars"
     }
 ]
