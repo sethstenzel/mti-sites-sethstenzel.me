@@ -36,7 +36,6 @@ def nav_bar(active_page='') -> None:
     with ui.row().classes('nav-bar-links w-full text-black px-4 py-2 gap-3 items-center'):
         link('Home', '/')
         link('Portfolio', '/portfolio')
-        link('Articles', '/articles')
         link('Contact', '/contact')
         link('GitHub', 'https://github.com/sethstenzel', icon_path='/static/imgs/gh.png', new_tab=True)
         link('YouTube', 'https://www.youtube.com/@sethstenzel', icon_path='/static/imgs/yt.svg', new_tab=True, encode_icon=True)

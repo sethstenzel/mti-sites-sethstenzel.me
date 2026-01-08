@@ -20,7 +20,7 @@ def build_index_page():
     ui.add_head_html(import_web_fonts())
     ui.add_head_html('<link rel="stylesheet" href="/static/css/styles.css">')
     
-    def main_conent():
+    def main_content():
         with ui.row().classes("card-inner-row card-inner-row-content"):
             with ui.grid(columns=2):
                 with ui.column().classes("left-main-content"):
@@ -43,7 +43,7 @@ def build_index_page():
         with ui.row().classes("card-inner-row-footer"):
             ui.label('In search of the fantastic, hidden in the everyday.')
 
-    generate_center_card(generate_header, main_conent, generate_footer, url=page_url)
+    generate_center_card(generate_header, main_content, generate_footer, url=page_url)
 
 
 

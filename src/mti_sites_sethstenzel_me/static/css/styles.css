@@ -39,11 +39,15 @@ body {
     max-width: 868px;
     margin-bottom: 2rem;
     margin-top: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
     justify-content: center;
 }
 
 .card-inner-row-content {
     min-height: 440px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .sectioning-hr, .sectioning-hr hr {
@@ -89,3 +93,4 @@ body {
 }
 
 .stat-card-white .stat-card-small-text {font-weight: 600;}
+

@@ -6,6 +6,7 @@ nginx-site.conf
 sethstenzel-site.service
 webhook-listener.service
 webhook-nginx.conf
+GMAIL_API_SETUP.md
 
 # Gmail API credentials (NEVER commit these!)
 credentials.json
