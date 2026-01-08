@@ -2,7 +2,7 @@
     {
     "project_name":"SethStenzel.me",
     "project_image_main":"/content/images/portfolio/sethstenzelme-portfolio.png",
-    "project_text":"A dynamic full-stack personal website that showcases my portfolio while demonstrating cutting-edge web development practices in action.<br><br>Powered by Python and the innovative NiceGUI framework, seamlessly deployed on a VPS with automated CI/CD pipelines through GitHub Actions and battle-tested Nginx reverse proxy configuration.",
+    "project_text":"A full-stack personal website built with Python and the NiceGUI framework.<br><br>Deployed on a VPS with CI/CD automation via GitHub Actions and Nginx reverse proxy configuration.",
     "project_github_link":"https://github.com/sethstenzel/mti-sites-sethstenzel.me",
     "project_youtube_link":"",
     "project_download_link":"",
@@ -12,7 +12,7 @@
     {
     "project_name":"Sparklets.im",
     "project_image_main":"/content/images/portfolio/sparkletsim-portfolio.png",
-    "project_text":"An innovative social media platform concept built to spread joy and strengthen connections through the delightful sharing of Sparklets between friends.<br><br>Crafted with a responsive Vue.js frontend and high-performance FastAPI backend, featuring rock-solid MongoDB integration secured through a private Tailscale network for maximum data protection.",
+    "project_text":"A social media platform concept for sharing Sparklets between friends.<br><br>Built with a Vue.js frontend and FastAPI backend, with MongoDB integration secured through a private Tailscale network.",
     "project_github_link":"https://github.com/sethstenzel/mti-sites-sparklets.im",
     "project_youtube_link":"",
     "project_download_link":"",
@@ -22,7 +22,7 @@
     {
     "project_name":"KitBash KVM Controller",
     "project_image_main":"/content/images/portfolio/kitbashkvm-portfolio.png",
-    "project_text":"A powerful open-source hardware and software solution that revolutionizes remote machine administration with professional IP-based KVM functionality.<br><br>Features an elegant Vue.js single-page application that delivers seamless video capture and precise keyboard/mouse control, empowering efficient management of local servers from anywhere.",
+    "project_text":"An open-source hardware and software solution for remote machine administration with IP-based KVM functionality.<br><br>Features a Vue.js single-page application that provides video capture and keyboard/mouse control for managing local servers remotely.",
     "project_github_link":"https://github.com/sethstenzel/kitbash-kvm",
     "project_youtube_link":"",
     "project_download_link":"",
@@ -32,7 +32,7 @@
     {
     "project_name":"Ghost Coder",
     "project_image_main":"/content/images/portfolio/ghostcoder-portfolio.png",
-    "project_text":"An intelligent developer productivity tool that transforms the tutorial creation process by automating repetitive coding tasks with precision and speed.<br><br>Engineered as a sophisticated Python multiprocess application that harnesses the power of MQTT protocol for lightning-fast inter-process communication and flawless real-time task coordination.",
+    "project_text":"A developer productivity tool that automates repetitive coding tasks for tutorial creation.<br><br>Built as a Python multiprocess application using MQTT protocol for inter-process communication and real-time task coordination.",
     "project_github_link":"https://github.com/sethstenzel/ghost-coder",
     "project_youtube_link":"",
     "project_download_link":"",
@@ -43,7 +43,7 @@
     {
     "project_name":"TinyRedirect",
     "project_image_main":"/content/images/portfolio/tinyredirect-portfolio.png",
-    "project_text":"A brilliantly simple local web service that supercharges productivity by creating short, memorable aliases for frequently accessed IP addresses and web URLs.<br><br>Dramatically simplifies network navigation and streamlines workflow efficiency, making it an indispensable tool for developers and system administrators juggling multiple local services.",
+    "project_text":"A local web service that creates short, memorable aliases for frequently accessed IP addresses and web URLs.<br><br>Simplifies network navigation for developers and system administrators working with multiple local services.",
     "project_github_link":"https://github.com/sethstenzel/tiny-redirect",
     "project_youtube_link":"https://youtu.be/aozdcDPskHs",
     "project_download_link":"",
@@ -53,7 +53,7 @@
     {
     "project_name":"SpecialChars",
     "project_image_main":"/content/images/portfolio/specialchars-portfolio.png",
-    "project_text":"An elegant productivity utility that revolutionizes special character input on US keyboard layouts through a beautifully intuitive hotkey-activated interface.<br><br>Delivers instant access to commonly needed special characters with automatic insertion and clipboard copying, dramatically boosting typing efficiency for multilingual content and technical documentation.",
+    "project_text":"A productivity utility that provides quick access to special characters on US keyboard layouts through a hotkey-activated interface.<br><br>Offers automatic insertion and clipboard copying of commonly needed special characters for multilingual content and technical documentation.",
     "project_github_link":"https://github.com/sethstenzel/special-chars",
     "project_youtube_link":"https://youtu.be/aa8u8R8715s",
     "project_download_link":"",
