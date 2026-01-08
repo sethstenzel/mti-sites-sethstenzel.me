@@ -12,7 +12,7 @@
     {
     "project_name":"Sparklets.im",
     "project_image_main":"/content/images/portfolio/sparkletsim-portfolio.png",
-    "project_text":"A social media platform concept for sharing Sparklets between friends.<br><br>Built with a Vue.js frontend and FastAPI backend, with MongoDB integration secured through a private Tailscale network.",
+    "project_text":"A social media platform concept for sharing Sparklets between friends.<br><br>Built with a Vue frontend and FastAPI backend, with MongoDB integration secured through a private Tailscale network.",
     "project_github_link":"https://github.com/sethstenzel/mti-sites-sparklets.im",
     "project_youtube_link":"",
     "project_download_link":"",
@@ -22,7 +22,7 @@
     {
     "project_name":"KitBash KVM Controller",
     "project_image_main":"/content/images/portfolio/kitbashkvm-portfolio.png",
-    "project_text":"An open-source hardware and software solution for remote machine administration with IP-based KVM functionality.<br><br>Features a Vue.js single-page application that provides video capture and keyboard/mouse control for managing local servers remotely.",
+    "project_text":"An open-source hardware and software solution for remote machine administration with KVM functionality.<br><br>Features a Vue single-page application that provides video capture and keyboard/mouse control for managing local servers remotely.",
     "project_github_link":"https://github.com/sethstenzel/kitbash-kvm",
     "project_youtube_link":"",
     "project_download_link":"",
