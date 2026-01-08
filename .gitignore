@@ -1,5 +1,5 @@
 # Custom
-deploy.sh
+# deploy.sh
 DEPLOYMENT.MD
 WEBHOOK_SETUP.md
 nginx-site.conf
