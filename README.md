@@ -1,6 +1,43 @@
 # sethstenzel.me
 
-Personal website built with [NiceGUI](https://nicegui.io/) - a Python-based web framework.
+A full-stack portfolio website demonstrating modern Python web development practices, production deployment workflows, and DevOps capabilities.
+
+## Technical Overview
+
+This project showcases:
+
+- **Python Web Framework**: Built with [NiceGUI](https://nicegui.io/), a modern Python web framework leveraging FastAPI and Vue.js for reactive UI components
+- **Component-Based Architecture**: Modular page structure with reusable template components
+- **Production Deployment**: systemd service management, nginx reverse proxy with WebSocket support, SSL/TLS encryption
+- **CI/CD Pipeline**: GitHub webhook integration for automated deployments with release branch strategy
+- **Cross-Platform Development**: Development environment configured for both Linux/Ubuntu and Windows
+
+## Tech Stack
+
+**Backend:**
+
+- Python 3.13+
+- NiceGUI (FastAPI + Vue.js)
+- uvicorn ASGI server
+
+**Frontend:**
+
+- Vue.js (via NiceGUI)
+- Tailwind CSS (via NiceGUI)
+- Responsive design with custom components
+
+**Infrastructure:**
+
+- nginx reverse proxy with WebSocket support
+- systemd service management
+- Let's Encrypt SSL/TLS certificates
+- Ubuntu VPS hosting
+
+**Development Tools:**
+
+- [uv](https://github.com/astral-sh/uv) - Modern Python package manager
+- Git for version control
+- FastAPI webhook listener for automated deployments
 
 ## Development Setup
 
@@ -11,25 +48,21 @@ Personal website built with [NiceGUI](https://nicegui.io/) - a Python-based web 
 
 ### Installation
 
-**On Linux/Ubuntu:**
+**Linux/Ubuntu:**
+
 ```bash
-# Clone the repository
 git clone https://github.com/sethstenzel/mti-sites-sethstenzel.me.git
 cd mti-sites-sethstenzel.me
-
-# Create virtual environment and install dependencies
 uv venv
 source .venv/bin/activate
 uv pip install -e .
 ```
 
-**On Windows:**
+**Windows:**
+
 ```powershell
-# Clone the repository
 git clone https://github.com/sethstenzel/mti-sites-sethstenzel.me.git
 cd mti-sites-sethstenzel.me
-
-# Create virtual environment and install dependencies
 uv venv
 .\.venv\Scripts\activate
 uv pip install -e .
@@ -37,13 +70,12 @@ uv pip install -e .
 
 ### Running Locally
 
-```
+```bash
 # Development mode (auto-reload, opens browser)
 cd ./src/mti_sites_sethstenzel.me
-python -m mti_sites_sethstenzel_me.site --dev (or without argument)
+python -m mti_sites_sethstenzel_me.site --dev
 
 # Production mode (runs on localhost:18001)
-cd ./src/mti_sites_sethstenzel.me
 python -m mti_sites_sethstenzel_me.site --prod
 ```
 
@@ -75,77 +107,48 @@ src/mti_sites_sethstenzel_me/
     └── pages/           # Page content (JSON)
 ```
 
+## Key Features
+
+### Component-Based Architecture
+
+The application uses a modular component structure with reusable templates:
+
+- **Template System**: Shared UI components ([header.py](src/mti_sites_sethstenzel_me/pages/templates/header.py), [nav_bar.py](src/mti_sites_sethstenzel_me/pages/templates/nav_bar.py), [footer.py](src/mti_sites_sethstenzel_me/pages/templates/footer.py)) promote code reuse
+- **Route Management**: Centralized routing in [routes.py](src/mti_sites_sethstenzel_me/routes.py) for clean URL structure
+- **Page Components**: Individual page modules ([index.py](src/mti_sites_sethstenzel_me/pages/index.py), [portfolio.py](src/mti_sites_sethstenzel_me/pages/portfolio.py), [articles.py](src/mti_sites_sethstenzel_me/pages/articles.py), [contact.py](src/mti_sites_sethstenzel_me/pages/contact.py)) for separation of concerns
+
+### Production Deployment
+
+Demonstrates professional deployment practices:
+
+- **Process Management**: systemd service configuration for automatic startup and crash recovery
+- **Reverse Proxy**: nginx configuration with WebSocket support for real-time updates
+- **SSL/TLS**: Automated certificate management with Let's Encrypt
+- **Environment Configuration**: Environment-based port configuration for flexible deployment
+
+### CI/CD Pipeline
+
+Implemented GitHub webhook-based continuous deployment:
+
+- **Release Branch Strategy**: Separate development and production branches
+- **Automated Deployments**: Push-to-deploy workflow using FastAPI webhook listener
+- **Zero-Downtime Updates**: Service restart automation via systemd
+- **Security**: HMAC-SHA256 signature verification for webhook authentication
+
+### Configuration Management
+
+The application supports environment-based configuration:
+
+```bash
+# Port configuration via environment variable
+export SETHSTENZEL_ME_PORT=18001
+```
+
+Default port: 18001
+
 ## Deployment
 
-See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed instructions on deploying to an Ubuntu VPS with nginx, certbot, and HTTPS.
-
-### Quick Deploy (Ubuntu VPS)
-
-```bash
-# On your VPS
-./deploy.sh install    # First time setup
-./deploy.sh update     # Update code and restart
-./deploy.sh restart    # Quick restart
-./deploy.sh logs       # View live logs
-./deploy.sh status     # Check status
-```
-
-### Auto-Deployment with GitHub Webhooks
-
-Set up automatic deployments triggered by GitHub push events. This setup uses a **release branch strategy** for production safety:
-
-- **`main` branch** - Active development (does NOT auto-deploy)
-- **`release` branch** - Production deployment (auto-deploys on push)
-
-When you merge `main` to `release` and push, your server automatically pulls changes and restarts the service.
-
-See [WEBHOOK_SETUP.md](WEBHOOK_SETUP.md) for complete setup instructions and release branch workflow.
-
-**Quick Setup:**
-1. Install FastAPI & uvicorn: `uv pip install -e .`
-2. Generate webhook secret: `python3 -c "import secrets; print(secrets.token_hex(32))"`
-3. Configure and start webhook listener service
-4. Update nginx configuration with webhook endpoint
-5. Add webhook in GitHub repository settings
-6. Create `release` branch: `git checkout -b release && git push origin release`
-
-**Deployment Workflow:**
-```bash
-# Develop on main (does NOT deploy)
-git checkout main
-git add .
-git commit -m "Add feature"
-git push origin main
-
-# Deploy to production (merge to release)
-git checkout release
-git merge main
-git push origin release  # Auto-deploys!
-```
-
-**Files:**
-- `webhook_listener.py` - FastAPI webhook listener (with auto-generated API docs)
-- `webhook-listener.service` - systemd service file (runs with uvicorn)
-- `webhook-nginx.conf` - nginx configuration snippet
-- `WEBHOOK_SETUP.md` - Complete setup guide with workflow details
-
-## Configuration
-
-The application reads the `SETHSTENZEL_ME_PORT` environment variable for production deployment:
-
-**Linux/Ubuntu:**
-```bash
-export SETHSTENZEL_ME_PORT=18001
-python -m mti_sites_sethstenzel_me.site
-```
-
-**Windows:**
-```powershell
-$env:SETHSTENZEL_ME_PORT="18001"
-python -m mti_sites_sethstenzel_me.site
-```
-
-Default port is 18001 if not specified.
+For detailed deployment instructions including server setup, nginx configuration, SSL certificates, and webhook automation, see [setup/deployment.md](setup/deployment.md).
 
 ## License
 
