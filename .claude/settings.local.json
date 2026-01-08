@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(dos2unix:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(git add:*)",
+      "Bash(git update-index:*)"
     ]
   }
 }
