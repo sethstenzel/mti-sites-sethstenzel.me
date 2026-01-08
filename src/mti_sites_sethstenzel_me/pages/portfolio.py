@@ -38,30 +38,35 @@ def create_project_card(project: dict):
         # Project title
         ui.label(project['project_name']).classes('text-xl font-bold mb-2')
 
-        # Main image - clickable if GitHub link exists
+        # Main image - clickable if project_clicked_link exists
         if project.get('project_image_main'):
-            if project.get('project_github_link'):
-                with ui.link(target=project['project_github_link'], new_tab=True).classes('w-full'):
+            if project.get('project_clicked_link'):
+                with ui.link(target=project['project_clicked_link'], new_tab=True).classes('w-full'):
                     ui.image(project['project_image_main']).classes('w-full rounded cursor-pointer')
             else:
                 ui.image(project['project_image_main']).classes('w-full rounded')
 
-        # Project description
-        ui.html(project['project_text'], sanitize=False).classes('mt-2 mb-4')
-
-        # Links row at the bottom
-        with ui.row().classes('w-full justify-end gap-2'):
-            # YouTube link (optional)
-            if project.get('project_youtube_link'):
-                with ui.link(target=project['project_youtube_link'], new_tab=True).classes('text-red-600'):
-                    ui.icon('play_circle', size='md')
-
+        # Links row directly under image
+        with ui.row().classes('w-full justify-start gap-2 items-center mt-2'):
             # GitHub link (optional)
             if project.get('project_github_link'):
-                with ui.link(target=project['project_github_link'], new_tab=True).classes('text-gray-700'):
-                    ui.icon('code', size='md')
+                with ui.link(target=project['project_github_link'], new_tab=True):
+                    ui.image('/static/imgs/gh.png').style('width: 32px; height: 32px;')
+
+            # YouTube link (optional)
+            if project.get('project_youtube_link'):
+                with ui.link(target=project['project_youtube_link'], new_tab=True):
+                    ui.image('/static/imgs/yt.svg').style('width: 32px; height: 32px;')
+
+            # Website link (optional)
+            if project.get('project_website_link'):
+                with ui.link(target=project['project_website_link'], new_tab=True):
+                    ui.icon('language', size='md').style('color: #1d6096')
 
             # Download link (optional)
             if project.get('project_download_link'):
-                with ui.link(target=project['project_download_link'], new_tab=True).classes('text-blue-600'):
-                    ui.icon('download', size='md')
+                with ui.link(target=project['project_download_link'], new_tab=True):
+                    ui.icon('download', size='md').style('color: #228B22')
+
+        # Project description
+        ui.html(project['project_text'], sanitize=False).classes('mt-2 mb-4')

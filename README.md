@@ -89,7 +89,6 @@ src/mti_sites_sethstenzel_me/
 ├── pages/               # Page components
 │   ├── index.py
 │   ├── portfolio.py
-│   ├── articles.py
 │   ├── contact.py
 │   └── templates/       # Shared UI components
 │       ├── center_card.py
@@ -102,7 +101,6 @@ src/mti_sites_sethstenzel_me/
 │   ├── js/
 │   └── imgs/
 └── content/             # Content files
-    ├── articles/
     ├── images/
     └── pages/           # Page content (JSON)
 ```

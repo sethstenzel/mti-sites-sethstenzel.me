@@ -5,31 +5,39 @@
     "project_text":"My personal website which serves as both a portfolio project, and a way to share my portfolio.<br><br>Written in Python using NiceGUI and deployed on a shared VPS.<br><br>Configured with Github actions for updates behind Nginx.",
     "project_github_link":"https://github.com/sethstenzel/mti-sites-sethstenzel.me",
     "project_youtube_link":"",
-    "project_download_link":""
+    "project_download_link":"",
+    "project_website_link":"",
+    "project_clicked_link":""
     },
     {
     "project_name":"Sparklets.im",
-    "project_image_main":"/content/images/portfolio/sparklets.im.png",
+    "project_image_main":"/content/images/portfolio/sparkletsim-portfolio.png",
     "project_text":"A social media site concept idea allowing friends to share telegram like notes to eachother.<br><br>Vue / FastAPI application on a shared VPS. Connects to a MongoDB via a private Tailscale connection.",
     "project_github_link":"https://github.com/sethstenzel/mti-sites-sethstenzel.me",
     "project_youtube_link":"www.youtube.com",
-    "project_download_link":""
+    "project_download_link":"",
+    "project_website_link":"",
+    "project_clicked_link":""
     },
     {
     "project_name":"KitBash KVM Controller",
-    "project_image_main":"/content/images/portfolio/sparklets.im.png",
+    "project_image_main":"/content/images/portfolio/kitbashkvm-portfolio.png",
     "project_text":"Vue SPA for use with KitBash KVM, my opensource hardware / software project for building a device to admin local machines by capturing video and sending keyboard and mouse control commands.",
-    "project_github_link":"https://github.com/sethstenzel/mti-sites-sethstenzel.me",
-    "project_youtube_link":"www.youtube.com",
-    "project_download_link":""
+    "project_github_link":"https://github.com/sethstenzel/kitbash-kvm",
+    "project_youtube_link":"",
+    "project_download_link":"",
+    "project_website_link":"https://kitbashkvm.com/controller/",
+    "project_clicked_link":""
     },
     {
-    "project_name":"Ghost Typer",
+    "project_name":"Ghost Coder",
     "project_image_main":"/content/images/portfolio/sparklets.im.png",
     "project_text":"A utility for assisting those writing coding tutorials by automating coding tasks. Python Multiprocess application using a MQTT backend for inter-process communication.",
-    "project_github_link":"https://github.com/sethstenzel/mti-sites-sethstenzel.me",
-    "project_youtube_link":"www.youtube.com",
-    "project_download_link":"https://github.com/sethstenzel/mti-sites-sethstenzel.me"
+    "project_github_link":"https://github.com/sethstenzel/ghost-coder",
+    "project_youtube_link":"https://github.com/sethstenzel/ghost-coder",
+    "project_download_link":"https://github.com/sethstenzel/ghost-coder",
+    "project_website_link":"https://github.com/sethstenzel/ghost-coder",
+    "project_clicked_link":"https://github.com/sethstenzel/ghost-coder"
     },
 
     {
@@ -38,6 +46,8 @@
     "project_text":"A local web redirect allowing local aliasing of common IP or web URLS to short aliases.",
     "project_github_link":"https://github.com/sethstenzel/mti-sites-sethstenzel.me",
     "project_youtube_link":"www.youtube.com",
-    "project_download_link":""
+    "project_download_link":"",
+    "project_website_link":"",
+    "project_clicked_link":""
     }
 ]
