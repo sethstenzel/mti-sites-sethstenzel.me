@@ -103,18 +103,20 @@ function update_application() {
     # Pull latest changes
     print_yellow "Pulling from git..."
 
-    # Fetch latest changes
-    git fetch origin
-
     # Get current branch
     CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
-    # Discard all local changes and reset to remote branch
-    print_yellow "Discarding local changes and resetting to origin/$CURRENT_BRANCH..."
-    git reset --hard "origin/$CURRENT_BRANCH"
-
-    # Remove all untracked files and directories
+    # Discard all local changes first (before fetching)
+    print_yellow "Discarding any local changes..."
+    git reset --hard HEAD
     git clean -fd
+
+    # Fetch latest changes
+    git fetch origin
+
+    # Reset to remote branch
+    print_yellow "Resetting to origin/$CURRENT_BRANCH..."
+    git reset --hard "origin/$CURRENT_BRANCH"
 
     # Update dependencies
     print_yellow "Updating dependencies..."

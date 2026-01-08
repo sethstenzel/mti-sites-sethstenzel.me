@@ -107,9 +107,9 @@ async def run_deployment() -> tuple[bool, str]:
     try:
         logger.info(f"Running deployment script: {DEPLOY_SCRIPT}")
 
-        # Run the deploy.sh update command
+        # Run the deploy.sh update command using bash explicitly
         result = subprocess.run(
-            [DEPLOY_SCRIPT, 'update'],
+            ['bash', DEPLOY_SCRIPT, 'update'],
             capture_output=True,
             text=True,
             timeout=300  # 5 minute timeout
