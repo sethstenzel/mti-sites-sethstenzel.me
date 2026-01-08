@@ -25,7 +25,7 @@ logger.add(
     level="INFO"
 )
 logger.add(
-    "webhook_listener.log",
+    "logs/webhook_listener.log",
     rotation="10 MB",
     retention="1 week",
     compression="zip",
