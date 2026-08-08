@@ -1,5 +1,5 @@
 from nicegui import ui
-from mti_sites_sethstenzel_me.utils import load_css, import_web_fonts
+from mti_sites_sethstenzel_me.utils import load_css, import_web_fonts, site_stylesheet
 from mti_sites_sethstenzel_me.pages.templates.constants import DARK_BLUE
 from mti_sites_sethstenzel_me.pages.templates.header import generate_header
 from mti_sites_sethstenzel_me.pages.templates.footer import generate_footer
@@ -12,7 +12,7 @@ page_url = '/portfolio'
 @ui.page(page_url)
 def build_portfolio_page():
     ui.add_head_html(import_web_fonts())
-    ui.add_head_html('<link rel="stylesheet" href="/static/css/styles.css">')
+    ui.add_head_html(site_stylesheet())
 
     def main_content():
         # Load portfolio data

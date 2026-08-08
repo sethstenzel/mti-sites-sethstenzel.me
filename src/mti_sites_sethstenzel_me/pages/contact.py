@@ -4,6 +4,7 @@ from loguru import logger
 from mti_sites_sethstenzel_me.utils import (
     load_css,
     import_web_fonts,
+    site_stylesheet,
     send_contact_form_email
 )
 from mti_sites_sethstenzel_me.pages.templates.constants import *
@@ -19,7 +20,7 @@ CONTACT_RECIPIENT_EMAIL = os.getenv('CONTACT_RECIPIENT_EMAIL', 'seth.c.stenzel@g
 @ui.page(page_url)
 def build_contact_page():
     ui.add_head_html(import_web_fonts())
-    ui.add_head_html('<link rel="stylesheet" href="/static/css/styles.css">')
+    ui.add_head_html(site_stylesheet())
 
     def main_content():
         with ui.row().classes("card-inner-row card-inner-row-content"):

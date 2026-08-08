@@ -1,4 +1,5 @@
 from pathlib import Path
+import hashlib
 import os
 import base64
 from email.mime.text import MIMEText
@@ -31,6 +32,34 @@ def load_css(file_path: str) -> str:
     except Exception as e:
         logger.exception(f"Error loading CSS file {file_path}: {e}")
         return ''
+
+STYLESHEET_URL = '/static/css/styles.css'
+_STYLESHEET_PATH = Path(__file__).parent / 'static' / 'css' / 'styles.css'
+_stylesheet_version: tuple[int, str] | None = None
+
+
+def site_stylesheet() -> str:
+    """Return the site stylesheet <link> tag, versioned so a changed file busts caches.
+
+    The file is served under a stable name with a one-hour max-age, so without a
+    version query a returning visitor keeps the old stylesheet after a deploy and
+    sees new markup styled by old CSS. The version is a content hash, recomputed
+    only when the file's mtime changes, so editing the CSS in development takes
+    effect on the next refresh.
+    """
+    global _stylesheet_version
+    try:
+        mtime = _STYLESHEET_PATH.stat().st_mtime_ns
+        if _stylesheet_version is None or _stylesheet_version[0] != mtime:
+            digest = hashlib.sha256(_STYLESHEET_PATH.read_bytes()).hexdigest()[:10]
+            _stylesheet_version = (mtime, digest)
+            logger.debug(f'Stylesheet version: {digest}')
+        return f'<link rel="stylesheet" href="{STYLESHEET_URL}?v={_stylesheet_version[1]}">'
+    except OSError as e:
+        # An unversioned link still works; it just relies on the cache expiring.
+        logger.error(f'Could not version stylesheet {_STYLESHEET_PATH}: {e}')
+        return f'<link rel="stylesheet" href="{STYLESHEET_URL}">'
+
 
 def import_web_fonts() -> str:
     return '''
