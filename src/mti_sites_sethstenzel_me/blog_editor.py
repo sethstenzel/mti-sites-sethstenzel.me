@@ -228,7 +228,15 @@ def build_editor_page() -> None:  # noqa: PLR0915 - one cohesive UI builder
     """
     state = EditorState()
 
-    ui.add_head_html('<link rel="stylesheet" href="/static/css/blog_editor.css">')
+    # Versioned like utils.site_stylesheet(): without the query a returning browser
+    # keeps a heuristically-cached old stylesheet and the layout silently breaks.
+    try:
+        css_version = (STATIC_DIR / 'css' / 'blog_editor.css').stat().st_mtime_ns
+    except OSError:
+        css_version = 0
+    ui.add_head_html(
+        f'<link rel="stylesheet" href="/static/css/blog_editor.css?v={css_version}">'
+    )
     ui.add_head_html(_HEAD_SCRIPT)
 
     # ----------------------------------------------------------------- helpers
@@ -649,7 +657,7 @@ def build_editor_page() -> None:  # noqa: PLR0915 - one cohesive UI builder
                     .classes('blog-editor-search')
                 post_list = ui.column().classes('blog-editor-post-list')
 
-        with ui.splitter(value=48, limits=(25, 75)).classes('blog-editor-splitter') as splitter:
+        with ui.splitter(value=50, limits=(0, 100)).classes('blog-editor-splitter') as splitter:
             with splitter.before:
                 with ui.column().classes('blog-editor-pane blog-editor-left'):
                     with ui.element('div').classes('blog-editor-meta'):

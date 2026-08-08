@@ -25,6 +25,9 @@ dependencies = [
 [project.urls]
 Homepage = "https://sethstenzel.me"
 
+[project.scripts]
+blog-editor = "mti_sites_sethstenzel_me.blog_editor:main"
+
 [tool.setuptools]
 package-dir = {"" = "src"}
 
