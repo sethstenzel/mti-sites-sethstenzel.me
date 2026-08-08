@@ -19,6 +19,7 @@ dependencies = [
     "google-auth-oauthlib>=1.2.3", # OAuth for Gmail API
     "google-api-python-client>=2.149.0", # Gmail API client
     "loguru>=0.7.0", # Better logging
+    "pyyaml>=6.0",  # Blog post frontmatter parsing
 ]
 
 [project.urls]

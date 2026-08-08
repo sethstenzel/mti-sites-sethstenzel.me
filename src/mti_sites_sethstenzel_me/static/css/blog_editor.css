@@ -1,0 +1,451 @@
+/* Styling for the local-only blog editor (mti_sites_sethstenzel_me/blog_editor.py).
+   Kept entirely separate from styles.css so the public site is unaffected. */
+
+:root {
+    --editor-accent: #1d6096;
+    --editor-border: #e4e4e7;
+    --editor-toolbar-height: 56px;
+    --editor-sidebar-width: 280px;
+    --editor-sidebar-rail: 48px;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Ubuntu', 'Segoe UI', system-ui, sans-serif;
+    font-size: 16px;
+}
+
+/* NiceGUI's page content wrapper is padded and gapped by default, which would
+   push the 100vh layout below the fold. Scoped to this stylesheet, so the public
+   site (which never loads this file) is unaffected. */
+.nicegui-content {
+    padding: 0 !important;
+    gap: 0 !important;
+    height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+    flex-wrap: nowrap;
+}
+
+/* --------------------------------------------------------------- toolbar -- */
+
+.blog-editor-toolbar {
+    height: var(--editor-toolbar-height);
+    border-bottom: 1px solid var(--editor-border);
+    background-color: #fafafa;
+    flex: 0 0 auto;
+}
+
+.blog-editor-status {
+    color: var(--editor-accent);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ------------------------------------------------------------------ body -- */
+
+/* Three columns: [post list] | [markdown source | preview]. */
+.blog-editor-body {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+    height: calc(100vh - var(--editor-toolbar-height));
+    max-height: calc(100vh - var(--editor-toolbar-height));
+    min-height: 0;
+}
+
+/* ----------------------------------------------------------- post sidebar -- */
+
+.blog-editor-sidebar {
+    flex: 0 0 var(--editor-sidebar-width);
+    width: var(--editor-sidebar-width);
+    min-width: 0;
+    height: 100%;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    overflow: hidden;
+    background-color: #fafafa;
+    border-right: 1px solid var(--editor-border);
+    transition: flex-basis 0.18s ease, width 0.18s ease;
+}
+
+/* Collapsed: only the rail with the toggle button stays, so there is always a
+   visible way back to the expanded list. */
+.blog-editor-sidebar.collapsed {
+    flex-basis: var(--editor-sidebar-rail);
+    width: var(--editor-sidebar-rail);
+}
+
+.blog-editor-sidebar.collapsed .blog-editor-sidebar-body,
+.blog-editor-sidebar.collapsed .blog-editor-sidebar-title,
+.blog-editor-sidebar.collapsed .blog-editor-sidebar-count {
+    display: none;
+}
+
+.blog-editor-sidebar.collapsed .blog-editor-sidebar-head {
+    justify-content: center;
+    padding: 0.4rem 0;
+}
+
+.blog-editor-sidebar-head {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.5rem;
+    border-bottom: 1px solid var(--editor-border);
+    min-height: 44px;
+}
+
+.blog-editor-sidebar-toggle {
+    flex: 0 0 auto;
+    color: var(--editor-accent);
+}
+
+.blog-editor-sidebar-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #3f3f46;
+    white-space: nowrap;
+}
+
+.blog-editor-sidebar-count {
+    margin-left: auto;
+    font-size: 0.75rem;
+    color: #71717a;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.blog-editor-sidebar-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    overflow: hidden;
+}
+
+.blog-editor-search {
+    flex: 0 0 auto;
+    width: 100%;
+}
+
+.blog-editor-search .q-field__control {
+    background-color: #ffffff;
+}
+
+/* The list itself is the only thing that scrolls inside the sidebar. */
+.blog-editor-post-list {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: 100%;
+    padding: 0;
+}
+
+.blog-editor-post-row {
+    display: block;
+    width: 100%;
+    padding: 0.35rem 0.5rem;
+    border-radius: 4px;
+    border-left: 3px solid transparent;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.12s ease;
+}
+
+.blog-editor-post-row:hover {
+    background-color: #eceff3;
+}
+
+.blog-editor-post-row.is-current {
+    background-color: #e3edf5;
+    border-left-color: var(--editor-accent);
+}
+
+.blog-editor-post-title {
+    display: block;
+    font-size: 0.875rem;
+    line-height: 1.3;
+    font-weight: 500;
+    color: #27272a;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.blog-editor-post-row.is-current .blog-editor-post-title {
+    color: var(--editor-accent);
+}
+
+.blog-editor-post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 1px;
+    font-size: 0.7rem;
+    line-height: 1.4;
+    color: #71717a;
+}
+
+.blog-editor-post-date {
+    font-variant-numeric: tabular-nums;
+}
+
+.blog-editor-post-series {
+    color: var(--editor-accent);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 11rem;
+}
+
+.blog-editor-post-draft {
+    padding: 0 0.3rem;
+    border-radius: 3px;
+    background-color: #f4c66a;
+    color: #4a3708;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    font-size: 0.625rem;
+}
+
+.blog-editor-post-empty {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.8rem;
+    color: #71717a;
+}
+
+/* -------------------------------------------------------------- splitter -- */
+
+/* Fills whatever the sidebar leaves. Both panes scroll independently. */
+.blog-editor-splitter {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 100%;
+    max-height: 100%;
+}
+
+.blog-editor-splitter .q-splitter__before,
+.blog-editor-splitter .q-splitter__after {
+    height: 100%;
+    overflow: auto;
+}
+
+.blog-editor-splitter .q-splitter__separator {
+    background-color: var(--editor-border);
+}
+
+.blog-editor-pane {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+}
+
+/* ------------------------------------------------------------ left  pane -- */
+
+.blog-editor-meta {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid var(--editor-border);
+}
+
+.blog-editor-upload {
+    min-height: unset;
+}
+
+.blog-editor-upload .q-uploader__list {
+    display: none;
+}
+
+.blog-editor-upload .q-uploader__header {
+    background-color: var(--editor-accent);
+}
+
+.blog-editor-thumb {
+    width: 72px;
+    height: 48px;
+    object-fit: cover;
+    border: 1px solid var(--editor-border);
+    border-radius: 4px;
+    flex: 0 0 auto;
+}
+
+/* The markdown source fills whatever height the metadata block leaves behind. */
+.blog-editor-source {
+    flex: 1 1 auto;
+    min-height: 260px;
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-editor-source .q-field__inner,
+.blog-editor-source .q-field__control,
+.blog-editor-source .q-field__control-container {
+    height: 100% !important;
+    min-height: 0;
+}
+
+.blog-editor-source textarea,
+textarea.blog-editor-textarea {
+    height: 100% !important;
+    max-height: none !important;
+    resize: none;
+    font-family: 'Cascadia Code', 'Consolas', 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 15px;
+    line-height: 1.65;
+    tab-size: 4;
+}
+
+.blog-editor-source .q-field__control:before {
+    border-color: var(--editor-border);
+}
+
+/* ------------------------------------------------------------ right pane -- */
+
+.blog-editor-preview {
+    background-color: #ffffff;
+}
+
+.blog-editor-preview-image {
+    width: 100%;
+    max-height: 260px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex: 0 0 auto;
+}
+
+.blog-editor-preview-title {
+    font-size: 2rem;
+    line-height: 1.25;
+    font-weight: 500;
+    color: #18181b;
+    flex: 0 0 auto;
+}
+
+.blog-editor-preview-meta {
+    font-size: 0.875rem;
+    color: #71717a;
+    flex: 0 0 auto;
+}
+
+.blog-editor-markdown {
+    flex: 1 1 auto;
+    min-height: 0;
+    font-family: 'Ubuntu', 'Segoe UI', system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.8;
+    color: #27272a;
+    max-width: 46rem;
+}
+
+.blog-editor-markdown h1,
+.blog-editor-markdown h2,
+.blog-editor-markdown h3,
+.blog-editor-markdown h4 {
+    color: var(--editor-accent);
+    font-weight: 500;
+    line-height: 1.3;
+    margin: 1.4em 0 0.5em;
+}
+
+.blog-editor-markdown h1 { font-size: 1.9rem; }
+.blog-editor-markdown h2 { font-size: 1.55rem; }
+.blog-editor-markdown h3 { font-size: 1.25rem; }
+
+.blog-editor-markdown p { margin: 0 0 1em; }
+
+.blog-editor-markdown a {
+    color: var(--editor-accent);
+    text-decoration: underline;
+}
+
+.blog-editor-markdown ul,
+.blog-editor-markdown ol {
+    margin: 0 0 1em 1.4em;
+    list-style: revert;
+}
+
+.blog-editor-markdown blockquote {
+    margin: 0 0 1em;
+    padding: 0.25rem 1rem;
+    border-left: 4px solid var(--editor-accent);
+    color: #52525b;
+    background-color: #f4f7fa;
+}
+
+.blog-editor-markdown code {
+    font-family: 'Cascadia Code', 'Consolas', ui-monospace, monospace;
+    font-size: 0.9em;
+    background-color: #f4f4f5;
+    padding: 0.1em 0.35em;
+    border-radius: 3px;
+}
+
+.blog-editor-markdown pre {
+    background-color: #f4f4f5;
+    border: 1px solid var(--editor-border);
+    border-radius: 6px;
+    padding: 0.85rem 1rem;
+    overflow-x: auto;
+    margin: 0 0 1em;
+}
+
+.blog-editor-markdown pre code {
+    background: none;
+    padding: 0;
+}
+
+.blog-editor-markdown table {
+    border-collapse: collapse;
+    margin: 0 0 1em;
+    width: 100%;
+}
+
+.blog-editor-markdown th,
+.blog-editor-markdown td {
+    border: 1px solid var(--editor-border);
+    padding: 0.4rem 0.65rem;
+    text-align: left;
+}
+
+.blog-editor-markdown th {
+    background-color: #f4f7fa;
+}
+
+.blog-editor-markdown img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+}
+
+.blog-editor-markdown hr {
+    border: none;
+    border-top: 1px solid var(--editor-border);
+    margin: 2em 0;
+}
