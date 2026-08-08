@@ -50,7 +50,7 @@ Every workday is exactly two focused hours:
 - **65 minutes — Execution:** build, query, test, benchmark, deploy, debug or interview practice.
 - **10 minutes — Close:** run quality checks, commit, log the lesson and write the next smallest action.
 
-## Flagship Project Spine
+## Flagship Projects
 
 I will also be focusing on two large projects and a capstone project:
 ### Flagship 1 — Geospatial Data Platform
@@ -90,7 +90,8 @@ A final system combining the strongest elements of the previous work into one em
 The last focus of this initiative is a Career Campaign. While the process may take up to two years, I will be looking to gain a supplementing job that is at least adjacent to my targeted career path.
 
 The plan is roughly:
-**Weeks 1–10:** sharpen positioning, clean GitHub and reconnect with former colleagues.
+
+- **Weeks 1–10:** sharpen positioning, clean GitHub and reconnect with former colleagues.
 - **Weeks 10–20:** apply to 3–5 highly matched Python/GIS/data roles weekly.
 - **Weeks 21–40:** publish substantial platform and product evidence; begin direct outreach.
 - **Weeks 41–60:** pursue advanced backend/data roles; use Rust only where it improves role fit.
